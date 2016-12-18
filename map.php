@@ -4,9 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" type="text/css" media="screen" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/css/style.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/css/map.css">
+    <link rel="stylesheet"
+          type="text/css"
+          media="screen"
+          href="css/bootstrap.min.css">
+    <link rel="stylesheet"
+          type="text/css"
+          media="screen"
+          href="css/style.css">
+    <link rel="stylesheet"
+          type="text/css"
+          media="screen"
+          href="css/map.css">
     <title>Главная страница</title>
 </head>
 <body>
@@ -39,8 +48,8 @@ include('include/menu.php');
             }
         </script>
     </div>
-    <script src="/js/jquery-3.1.1.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZUM1IWmQ9snKi3GXbQQ67ArP21ggtOcg&callback=initMap">
     </script>

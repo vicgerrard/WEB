@@ -70,9 +70,9 @@ if (isset($_GET['act'])) {
           type="text/css"
           media="screen"
           href="/css/admin.css">
-    <script src="/js/jquery-3.1.1.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/ckeditor/ckeditor.js"></script>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="ckeditor/ckeditor.js"></script>
 
     <title>Главная страница</title>
 </head>

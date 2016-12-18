@@ -15,15 +15,17 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="../">Мой сайт</a>
+            <a class="navbar-brand"
+               href="index.php">Мой сайт</a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li<?php if ($page == 'index') { ?> class="active"<?php } ?>><a href="../">Главная страница</a></li>
-                <li<?php if ($page == 'blog') { ?> class="active"<?php } ?>><a href="../blog">Блог</a></li>
-                <li<?php if ($page == 'contact') { ?> class="active"<?php } ?>><a href="../contact">Контакты</a></li>
-                <li<?php if ($page == 'map') { ?> class="active"<?php } ?>><a href="../map">Карта</a></li>
-                <li<?php if ($page == 'admin') { ?> class="active"<?php } ?>><a href="../admin">Панель
+                <li<?php if ($page == 'index') { ?> class="active"<?php } ?>><a href="index.php">Главная страница</a>
+                </li>
+                <li<?php if ($page == 'blog') { ?> class="active"<?php } ?>><a href="blog.php">Блог</a></li>
+                <li<?php if ($page == 'contact') { ?> class="active"<?php } ?>><a href="contact.php">Контакты</a></li>
+                <li<?php if ($page == 'map') { ?> class="active"<?php } ?>><a href="map.php">Карта</a></li>
+                <li<?php if ($page == 'admin') { ?> class="active"<?php } ?>><a href="admin.php">Панель
                         администратора</a></li>
                 <?php
 
@@ -31,7 +33,7 @@
                         session_start();
                     if (isset($_SESSION['logined']) && $_SESSION['logined'] == 1) {
                         ?>
-                        <li><a href="../admin?act=logout">Выход</a></li><?php
+                        <li><a href="admin.php?act=logout">Выход</a></li><?php
                     }
 
                 ?>
