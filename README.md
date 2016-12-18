@@ -5,4 +5,9 @@
 3. Исправить файл include/connection.php корректными данными для подключения к бд.
 
 
-![alt tag](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
+![alt tag](http://i.imgur.com/6t6jrQk.png)
+![alt tag](http://i.imgur.com/KDdIhht.png)
+![alt tag](http://i.imgur.com/JDbDohD.png)
+![alt tag](http://i.imgur.com/Wq7Il6i.png)
+
+
