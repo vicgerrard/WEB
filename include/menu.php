@@ -26,14 +26,14 @@
                 <li<?php if ($page == 'admin') { ?> class="active"<?php } ?>><a href="../admin">Панель
                         администратора</a></li>
                 <?php
-                if ($page == 'admin') {
-                    if (session_status() == PHP_SESSION_NONE)
+
+                if (session_status() == PHP_SESSION_NONE)
                         session_start();
                     if (isset($_SESSION['logined']) && $_SESSION['logined'] == 1) {
                         ?>
                         <li><a href="../admin?act=logout">Выход</a></li><?php
                     }
-                }
+
                 ?>
             </ul>
         </div>

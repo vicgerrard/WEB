@@ -1,3 +1,20 @@
+<?php
+session_start();
+$feedbackSended = false;
+if (isset($_GET['act']) and $_GET['act'] == 'send') {
+    if (isset($_POST['name']) and isset($_POST['email']) and isset($_POST['message'])) {
+        require 'include/connection.php';
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $message = $_POST['message'];
+        $query = $conn->query("INSERT INTO feedback VALUES ('','$name','$email','$message')");
+        if ($query) {
+            $feedbackSended = true;
+        }
+    }
+}
+require "include/connection.php";
+?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -17,7 +34,14 @@ include('include/menu.php');
 <div class="container">
     <!-- Main component for a primary marketing message or call to action -->
     <div class="jumbotron">
-        <form id="messageForm">
+        <?php if ($feedbackSended) { ?>
+            <div class="alert alert-success">
+                <strong>Успешно!</strong> Ваше сообщение отправлено, с вами скоро свяжутся.
+            </div>
+        <?php } ?>
+        <form id="messageForm"
+              method="POST"
+              action="?act=send">
             <div class="row">
                 <div id="error" class="col-sm-12" style="color: #ff0000; margin-top: 5px; margin-bottom: 5px;"></div>
                 <!-- Имя и email пользователя -->
@@ -45,11 +69,11 @@ include('include/menu.php');
             <div class="form-group has-feedback">
                 <label for="message" class="control-label">Введите сообщение:</label>
                 <textarea id="message" class="form-control" rows="3"
+                          name="message"
                           placeholder="Введите сообщение от 20 до 500 символов" minlength="20" maxlength="500"
                           required="required"></textarea>
             </div>
             <hr>
-            <!-- Кнопка, отправляющая форму по технологии AJAX -->
             <button type="submit" class="btn btn-primary pull-right">Отправить сообщение</button>
         </form><!-- Конец формы -->
 
