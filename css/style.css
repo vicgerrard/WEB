@@ -1,0 +1,8 @@
+.navbar-static-top {
+    margin-bottom: 19px;
+}
+
+html {
+    overflow: -moz-scrollbars-vertical;
+    overflow-y: scroll;
+}
