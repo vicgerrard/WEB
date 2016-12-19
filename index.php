@@ -23,7 +23,7 @@ include('include/menu.php');
         <h2>Мой сайт</h2>
         <p>Этот сайт является <strong>необходимым условием</strong> получения зачета. Он сделан в IDE PhpStorm. В сайте
             используются:
-            php, html5, jQuery, bootstrap, ckEditor. </p>
+            php, html5, jQuery, bootstrap (+validation), ckEditor, json, google maps api, mySQL, </p>
         <p>С помощью меню в верхней части страницы можно перейти к текущим новостям, связаться с нами, посмотреть карту
             и отредактировать что-то в панели администратора.</p>
     </div>
