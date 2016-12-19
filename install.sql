@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 18, 2016 at 10:24 PM
+-- Generation Time: Dec 20, 2016 at 12:08 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -38,7 +38,7 @@ CREATE TABLE `blog` (
 --
 
 INSERT INTO `blog` (`id`, `title`, `date`, `text`) VALUES
-(22, 'Ð¡ÐµÐ½ÑÐ°Ñ†Ð¸Ð¾Ð½Ð½Ð°Ñ Ð½Ð¾Ð²Ð¾ÑÑ‚ÑŒ!!!', '2016-12-19 00:02:58', '<p>Ð¡ÐµÐ³Ð¾Ð´Ð½Ñ Ñ€Ð¾Ð²Ð½Ð¾ Ð² Ð¿Ð¾Ð»Ð½Ð¾Ñ‡ÑŒ Ð‘Ð°Ñ‚Ñ‹Ñ€Ð¾Ð²Ð° ÐÐ¹Ð³ÑƒÐ»ÑŒ Ð Ð°Ð¼Ð¸Ð»ÐµÐ²Ð½Ð° Ð·Ð°ÑÐ²Ð¸Ð»Ð° Ð¾ ÑÐ²Ð¾ÐµÐ¼ Ð¿Ñ€Ð¾Ñ‚ÐµÐ·Ðµ Ð¿Ñ€Ð¾Ñ‚Ð¸Ð² Ð½ÐµÑÐ¿Ñ€Ð°Ð²ÐµÐ´Ð»Ð¸Ð²Ð¾ÑÑ‚Ð¸.</p>\r\n');
+(22, 'Ð¡ÐµÐ½ÑÐ°Ñ†Ð¸Ð¾Ð½Ð½Ð°Ñ Ð½Ð¾Ð²Ð¾ÑÑ‚ÑŒ!!!', '2016-12-19 00:02:58', '<p><strong>Ð¡ÐµÐ³Ð¾Ð´Ð½Ñ Ñ€Ð¾Ð²Ð½Ð¾ Ð² Ð¿Ð¾Ð»Ð½Ð¾Ñ‡ÑŒ Ð‘Ð°Ñ‚Ñ‹Ñ€Ð¾Ð²Ð° ÐÐ¹Ð³ÑƒÐ»ÑŒ Ð Ð°Ð¼Ð¸Ð»ÐµÐ²Ð½Ð° Ð·Ð°ÑÐ²Ð¸Ð»Ð° Ð¾ ÑÐ²Ð¾ÐµÐ¼ Ð¿Ñ€Ð¾Ñ‚ÐµÐ·Ðµ Ð¿Ñ€Ð¾Ñ‚Ð¸Ð² Ð½ÐµÑÐ¿Ñ€Ð°Ð²ÐµÐ´Ð»Ð¸Ð²Ð¾ÑÑ‚Ð¸.</strong></p>\r\n');
 
 -- --------------------------------------------------------
 
@@ -65,41 +65,37 @@ INSERT INTO `feedback` (`id`, `name`, `email`, `messages`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `marker`
+-- Table structure for table `map`
 --
 
-CREATE TABLE `marker` (
-  `marker_id` int(11) NOT NULL,
-  `marker_category_id` int(11) DEFAULT NULL,
-  `marker_marker_type_id` int(11) DEFAULT NULL,
-  `marker_latitude` varchar(255) DEFAULT NULL,
-  `marker_longitude` varchar(255) DEFAULT NULL,
-  `marker_image` varchar(255) DEFAULT NULL,
-  `marker_size_x` int(11) DEFAULT NULL,
-  `marker_size_y` int(11) DEFAULT NULL,
-  `marker_point1_x` int(11) DEFAULT NULL,
-  `marker_point1_y` int(11) DEFAULT NULL,
-  `marker_point2_x` int(11) DEFAULT NULL,
-  `marker_point2_y` int(11) DEFAULT NULL,
-  `marker_title_ru` varchar(255) DEFAULT NULL,
-  `marker_title_en` varchar(255) DEFAULT NULL,
-  `marker_content_en` varchar(255) DEFAULT NULL,
-  `marker_type` char(10) DEFAULT NULL,
-  `marker_content_ru` varchar(255) DEFAULT NULL,
-  `marker_address` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+CREATE TABLE `map` (
+  `center_latitude` float NOT NULL,
+  `center_longitude` float NOT NULL,
+  `zoom` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `map`
+--
+
+INSERT INTO `map` (`center_latitude`, `center_longitude`, `zoom`) VALUES
+(10, 100, 8);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `marker_type`
+-- Table structure for table `markers`
 --
 
-CREATE TABLE `marker_type` (
-  `marker_type_id` int(11) NOT NULL,
-  `marker_type_name` varchar(255) DEFAULT NULL,
-  `marker_type_acronym` varchar(255) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+CREATE TABLE `markers` (
+  `id` int(11) NOT NULL,
+  `title` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `address` varchar(100) CHARACTER SET utf8 DEFAULT NULL,
+  `image` varchar(100) CHARACTER SET utf8 DEFAULT NULL,
+  `latitude` float NOT NULL,
+  `longitude` float NOT NULL,
+  `url` varchar(100) CHARACTER SET utf8 DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -137,18 +133,10 @@ ALTER TABLE `feedback`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `marker`
+-- Indexes for table `markers`
 --
-ALTER TABLE `marker`
-  ADD PRIMARY KEY (`marker_id`),
-  ADD KEY `FK_Reference_33` (`marker_category_id`),
-  ADD KEY `FK_Reference_34` (`marker_marker_type_id`);
-
---
--- Indexes for table `marker_type`
---
-ALTER TABLE `marker_type`
-  ADD PRIMARY KEY (`marker_type_id`);
+ALTER TABLE `markers`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `users`
@@ -165,22 +153,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `blog`
 --
 ALTER TABLE `blog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT for table `marker`
+-- AUTO_INCREMENT for table `markers`
 --
-ALTER TABLE `marker`
-  MODIFY `marker_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `marker_type`
---
-ALTER TABLE `marker_type`
-  MODIFY `marker_type_id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `markers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
