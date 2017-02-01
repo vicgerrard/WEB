@@ -7,7 +7,7 @@
  */
 require "connection.php";
 //get markers
-$query = $conn->query("SELECT * FROM markers");
+$query = $conn->query("SELECT * FROM markers ORDER BY 1 DESC");
 $markers = array();
 while ($r = mysqli_fetch_assoc($query)) {
     $markers[] = $r;

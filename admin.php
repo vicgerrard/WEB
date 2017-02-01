@@ -123,6 +123,8 @@ if (isset($_GET['act'])) {
           type="text/css"
           media="screen"
           href="css/admin.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZUM1IWmQ9snKi3GXbQQ67ArP21ggtOcg">
+    </script>
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="ckeditor/ckeditor.js"></script>
@@ -503,6 +505,36 @@ include('include/menu.php');
                                                minlength="10"
                                                maxlength="100">
                                         <br>
+                                        <div id="mapControl"
+                                             class="jumbotron">
+                                            <script type="text/javascript">
+                                                var map;
+                                                var marker;
+                                                function initMap() {
+                                                    map = new google.maps.Map(document.getElementById('mapControl'), {
+                                                        center: {lat: 10.0, lng: 20.0},
+                                                        zoom: 1
+                                                    });
+
+                                                    map.addListener('click', function (event) {
+                                                        if (marker) marker.setPosition(event.latLng);
+                                                        else {
+                                                            marker = new google.maps.Marker({
+                                                                map: map,
+                                                                position: {
+                                                                    lat: event.latLng.lat(),
+                                                                    lng: event.latLng.lng()
+                                                                }
+                                                            });
+                                                        }
+                                                        $('#lat').val(event.latLng.lat());
+                                                        $('#lng').val(event.latLng.lng());
+                                                    })
+                                                }
+                                                ;
+                                                initMap();
+                                            </script>
+                                        </div>
                                         <label for="lat">Широта точки</label>
                                         <input type="number"
                                                name="lat"

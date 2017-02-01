@@ -16,7 +16,7 @@
           type="text/css"
           media="screen"
           href="css/blog.css">
-    <title>Новости</title>
+    <title>Блог</title>
 </head>
 <body>
 <?php
